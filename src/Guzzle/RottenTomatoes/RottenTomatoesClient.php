@@ -13,10 +13,9 @@ class RottenTomatoesClient extends Client
      *
      * @param array|Collection $config Configuration data. Array keys:
      *    base_url - Base URL of web service
+     *    apikey   - Rotten Tomatoes API key
      *
      * @return RottenTomatoesClient
-     *
-     * @TODO update factory method and docblock for parameters
      */
     public static function factory($config)
     {
@@ -28,7 +27,6 @@ class RottenTomatoesClient extends Client
 
         $client = new self($config->get('base_url'));
         $client->setConfig($config);
-
         $client->setDescription(XmlDescriptionBuilder::build(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
 
         return $client;
