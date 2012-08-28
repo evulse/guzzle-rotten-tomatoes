@@ -11,55 +11,55 @@
             <param name="page_limit" type="integer" location="query" default="20" />
         </command>
         <command name="uses_id">
-            <param name="id" type="integer" location="path" required="true" />
+            <param name="id" type="integer" location="uri" required="true" />
         </command>
 
         <!-- Movie commands -->
-        <command name="movies.box_office" method="GET" path="lists/movies/box_office.json" extends="has_country">
+        <command name="movies.box_office" method="GET" uri="lists/movies/box_office.json" extends="has_country">
             <param name="limit" type="integer" location="query" />
         </command>
-        <command name="movies.in_theaters" method="GET" path="lists/movies/in_theaters.json" extends="paginated" />
-        <command name="movies.opening" method="GET" path="lists/movies/opening.json" extends="has_country">
+        <command name="movies.in_theaters" method="GET" uri="lists/movies/in_theaters.json" extends="paginated" />
+        <command name="movies.opening" method="GET" uri="lists/movies/opening.json" extends="has_country">
             <param name="limit" type="integer" location="query" />
         </command>
-        <command name="movies.upcoming" method="GET" path="lists/movies/upcoming.json" extends="paginated" />
+        <command name="movies.upcoming" method="GET" uri="lists/movies/upcoming.json" extends="paginated" />
 
         <!-- DVD lists commands -->
-        <command name="dvds.top_rentals" method="GET" path="lists/movies/top_rentals.json" extends="has_country">
+        <command name="dvds.top_rentals" method="GET" uri="lists/movies/top_rentals.json" extends="has_country">
             <param name="limit" type="integer" location="query" />
         </command>
-        <command name="dvds.current_releases" method="GET" path="lists/movies/box_office.json" extends="paginated" />
-        <command name="dvds.new_releases" method="GET" path="lists/movies/new_releases.json" extends="paginated" />
-        <command name="dvds.upcoming" method="GET" path="lists/movies/upcoming.json" extends="paginated" />
+        <command name="dvds.current_releases" method="GET" uri="lists/movies/box_office.json" extends="paginated" />
+        <command name="dvds.new_releases" method="GET" uri="lists/movies/new_releases.json" extends="paginated" />
+        <command name="dvds.upcoming" method="GET" uri="lists/movies/upcoming.json" extends="paginated" />
 
         <!-- Detailed info commands -->
-        <command name="movie.info" method="GET" path="movies/{{id}}.json" extends="uses_id" />
-        <command name="movie.cast" method="GET" path="movies/{{id}}/cast.json" extends="uses_id" />
-        <command name="movie.clips" method="GET" path="movies/{{id}}/clips.json" extends="uses_id" />
-        <command name="movie.reviews" method="GET" path="movies/{{id}}/reviews.json" extends="uses_id">
+        <command name="movie.info" method="GET" uri="movies/{{id}}.json" extends="uses_id" />
+        <command name="movie.cast" method="GET" uri="movies/{{id}}/cast.json" extends="uses_id" />
+        <command name="movie.clips" method="GET" uri="movies/{{id}}/clips.json" extends="uses_id" />
+        <command name="movie.reviews" method="GET" uri="movies/{{id}}/reviews.json" extends="uses_id">
             <param name="review_type" type="choice:all,top_critic,dvd" location="query" required="true" default="all" />
             <param name="page" type="integer" location="query" default="1" />
             <param name="page_limit" type="integer" location="query" />
             <param name="country" filter="strtolower" type="string" location="query" />
         </command>
-        <command name="movie.similar" method="GET" path="movies/{{id}}/similar.json" extends="uses_id">
+        <command name="movie.similar" method="GET" uri="movies/{{id}}/similar.json" extends="uses_id">
             <param name="limit" type="integer" location="query" />
         </command>
 
-        <command name="movie.alias" method="GET" path="movies/{{id}}.json" extends="uses_id">
+        <command name="movie.alias" method="GET" uri="movies/{{id}}.json" extends="uses_id">
             <param name="type" type="choice:imdb" location="query" required="true" />
         </command>
 
-        <command name="movie.search" method="GET" path="movies.json">
+        <command name="movie.search" method="GET" uri="movies.json">
             <param name="q" type="string" location="query" required="true" />
             <param name="page" type="integer" location="query" default="1" />
             <param name="page_limit" type="integer" location="query" />
         </command>
 
         <!-- Lists API -->
-        <command name="lists" method="GET" path="lists.json" />
-        <command name="lists.movies" method="GET" path="lists/movies.json" />
-        <command name="lists.dvds" method="GET" path="lists/dvds.json" />
+        <command name="lists" method="GET" uri="lists.json" />
+        <command name="lists.movies" method="GET" uri="lists/movies.json" />
+        <command name="lists.dvds" method="GET" uri="lists/dvds.json" />
 
     </commands>
 </client>
