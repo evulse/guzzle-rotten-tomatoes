@@ -4,7 +4,7 @@ namespace Guzzle\RottenTomatoes;
 
 use Guzzle\Service\Client;
 use Guzzle\Service\Inspector;
-use Guzzle\Service\Description\XmlDescriptionBuilder;
+use Guzzle\Service\Description\ServiceDescription;
 
 class RottenTomatoesClient extends Client
 {
@@ -17,7 +17,7 @@ class RottenTomatoesClient extends Client
      *
      * @return RottenTomatoesClient
      */
-    public static function factory($config)
+    public static function factory($config = array())
     {
         $default = array(
             'base_url' => 'http://api.rottentomatoes.com/api/public/v1.0?apikey={{apikey}}'
