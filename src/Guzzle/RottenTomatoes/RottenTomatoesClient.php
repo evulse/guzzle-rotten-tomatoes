@@ -27,7 +27,7 @@ class RottenTomatoesClient extends Client
 
         $client = new self($config->get('base_url'));
         $client->setConfig($config);
-        $client->setDescription(XmlDescriptionBuilder::build(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
+        $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
 
         return $client;
     }
