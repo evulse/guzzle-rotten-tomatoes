@@ -2,8 +2,8 @@
 
 namespace Guzzle\RottenTomatoes;
 
+use Guzzle\Common\Collection;
 use Guzzle\Service\Client;
-use Guzzle\Service\Inspector;
 use Guzzle\Service\Description\ServiceDescription;
 
 class RottenTomatoesClient extends Client
@@ -23,7 +23,7 @@ class RottenTomatoesClient extends Client
             'base_url' => 'http://api.rottentomatoes.com/api/public/v1.0?apikey={{apikey}}'
         );
         $required = array('base_url', 'apikey');
-        $config = Inspector::prepareConfig($config, $default, $required);
+        $config = Collection::fromConfig($config, $default, $required);
 
         $client = new self($config->get('base_url'));
         $client->setConfig($config);
