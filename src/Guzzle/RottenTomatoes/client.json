@@ -1,0 +1,25 @@
+{
+    "name": "Rotten Tomatoes API",
+    "baseUrl": "http://api.rottentomatoes.com/api/public/v1.0/?apikey={{apikey}}",
+    "operations": {
+        "SearchMovies": {
+            "httpMethod": "GET",
+            "uri": "movies.json",
+            "summary": "The movies search endpoint for plain text queries. Let's you search for movies!",
+            "parameters": {
+                "q": {
+                    "location": "query",
+                    "description": "The plain text search query to search for a movie."
+                },
+                "page_limit": {
+                    "location": "query",
+                    "description": "The amount of movie search results to show per page."
+                },
+                "page": {
+                    "location": "query",
+                    "description": "The selected page of movie search results."
+                }
+            }
+        }
+    }
+}

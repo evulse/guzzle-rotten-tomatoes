@@ -5,30 +5,28 @@ namespace Guzzle\RottenTomatoes;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
+use Guzzle\Http\Message\RequestInterface;
 
 class RottenTomatoesClient extends Client
 {
-    /**
-     * Factory method to create a new RottenTomatoesClient
-     *
-     * @param array|Collection $config Configuration data. Array keys:
-     *    base_url - Base URL of web service
-     *    apikey   - Rotten Tomatoes API key
-     *
-     * @return RottenTomatoesClient
-     */
-    public static function factory($config = array())
+    public function __construct($baseUrl = '', $config = null)
     {
-        $default = array(
-            'base_url' => 'http://api.rottentomatoes.com/api/public/v1.0?apikey={{apikey}}'
-        );
-        $required = array('base_url', 'apikey');
+        $default = array();
+        $required = array('apikey');
         $config = Collection::fromConfig($config, $default, $required);
 
-        $client = new self($config->get('base_url'));
-        $client->setConfig($config);
-        $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
-
-        return $client;
+        parent::__construct($baseUrl, $config);
+        $this->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'client.json'));
     }
+
+    public function createRequest($method = RequestInterface::GET, $uri = null, $headers = null, $body = null)
+    {
+        $request = parent::createRequest($method, $uri, $headers, $body);
+
+        $request->getQuery()->set('apikey', $this->getConfig()->get('apikey'));
+
+        return $request;
+    }
+
+
 }
