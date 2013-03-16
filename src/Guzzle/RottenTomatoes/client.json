@@ -23,7 +23,7 @@
         },
         "MovieInfo": {
             "httpMethod": "GET",
-            "uri": "movies/:id.json",
+            "uri": "movies/{id}.json",
             "summary": "Detailed information on a specific movie specified by Id. You can use the movies search endpoint or peruse the lists of movies/dvds to get the urls to movies.",
             "parameters": {
                 "id": {
